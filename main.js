@@ -52,6 +52,21 @@ const kittenThree = ` <li class="card">
 kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
 
+const addKittenSection = document.querySelector('.js-new-kitten');
 
+const newForm = document.querySelector(".js-new-form")
 
+const newKittenButton = document.querySelector(".js-kitten-add");
 
+newKittenButton.addEventListener("click", (event)=>{
+  addKittenSection.classList.toggle('collapsed');
+  console.log(event.currentTarget);
+  console.log(event.target);
+});
+
+const buttonCancel = document.querySelector('.js-button-cancel');
+
+buttonCancel.addEventListener('click', (event)=>{
+  addKittenSection.classList.add('collapsed');
+  newForm.reset();
+});
