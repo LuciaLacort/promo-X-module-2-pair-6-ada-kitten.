@@ -74,7 +74,7 @@ buttonCancel.addEventListener('click', (event)=>{
 
 
 
-//busqueda
+//búsqueda
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
 const searchBtn = document.querySelector('.js_search_btn');
@@ -102,9 +102,26 @@ searchBtn.addEventListener('click', (event)=>{
 
 });
 
+//cómo hacer que dé igual si se escribe con mayúscula o no y cómo checkear que sean palabras importantes las de la búsqueda (que si la búsqueda tiene la, todos tienen esa palabra en la descripción)
 
 
+// raza
 
+let html = '';
 
+if (kittenRace1 === "") {
+  html = `Uy que despiste, no sabemos su raza`;
+} else {
+  html = kittenRace1;
+}
 
+const input_search_race = document.querySelector('.js_in_search_race');
+
+searchBtn.addEventListener('click', (event)=>{
+  event.preventDefault();
+  const raceSearchText = input_search_desc.value;
+  kittenList.innerHTML = " ";
+  
+  //hacer las condicionales etc
+});
 
