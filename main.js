@@ -85,7 +85,7 @@ console.log(kittenDesc3);*/
 
 const searchBtn = document.querySelector('.js_search_btn');
 
-searchBtn.addEventListener('click', (ev)=>{
+searchBtn.addEventListener('click', (event)=>{
   const descrSearchText = input_search_desc.value;
   console.log(descrSearchText);
 
