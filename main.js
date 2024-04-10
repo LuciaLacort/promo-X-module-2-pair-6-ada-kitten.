@@ -83,7 +83,16 @@ let desc = 'Es un gato chulísimo';
 let raza = 'Alien';
 let url = 'https://dev.adalab.es/maine-coon-cat.webp';*/
 
-function renderKitten(url, desc, name, raza){
+
+const inputImage = document.querySelector('.js-input-image');
+const inputName = document.querySelector('.input js-input-name');
+const inputRace = document.querySelector('.js-input-raza');
+const inputDesc = document.querySelector('.js-input-desc');
+
+
+
+function renderKitten(url, name, raza, desc){
+
   const newCat = `<li class="card">
   <article>
     <img
@@ -119,8 +128,12 @@ showFormButton.addEventListener('click', handleClickNewCatForm);
 
 function addNewKitten(event) {
   event.preventDefault();
+  let url = inputImage.value;
+  let name = inputName.value;
+  let raza = inputRace.value;
+  let desc = inputDesc.value;
   //Recoger inputs.value
-  kittenList.innerHTML += renderKitten('https://dev.adalab.es/maine-coon-cat.webp','Antonia', 'Alien', 'hermoso' ); 
+  kittenList.innerHTML += renderKitten(); 
 }
 
 addKittenButton.addEventListener('click', addNewKitten);
@@ -133,7 +146,6 @@ buttonCancel.addEventListener('click', (event)=>{
   addKittenSection.classList.add('collapsed');
   newForm.reset();
 });
-
 
 
 //búsqueda
