@@ -52,17 +52,79 @@ const kittenThree = ` <li class="card">
 kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
 
+//Definir query selectors
+
 const addKittenSection = document.querySelector('.js-new-kitten');
 
-const newForm = document.querySelector(".js-new-form")
+const newForm = document.querySelector('.js-new-form');
 
-const newKittenButton = document.querySelector(".js-kitten-add");
+const showFormButton = document.querySelector('.js-kitten-add');
 
-newKittenButton.addEventListener("click", (event)=>{
+const addKittenButton = document.querySelector('.js-btn-add');
+
+
+
+function showNewCatForm() {
+  addKittenSection.classList.remove('collapsed');
+}
+function hideNewCatForm() {
+  addKittenSection.classList.add('collapsed');
+}
+
+/*showFormButton.addEventListener("click", (event)=>{
   addKittenSection.classList.toggle('collapsed');
   console.log(event.currentTarget);
   console.log(event.target);
-});
+});*/
+
+
+/*let name = 'Opi';
+let desc = 'Es un gato chulísimo';
+let raza = 'Alien';
+let url = 'https://dev.adalab.es/maine-coon-cat.webp';*/
+
+function renderKitten(url, desc, name, raza){
+  const newCat = `<li class="card">
+  <article>
+    <img
+      class="card_img"
+      src=${url}
+      alt="siames-cat"
+    />
+    <h3 class="card_title">${name}</h3>
+    <h4 class="card_race">${raza}</h4>
+    <p class="card_description">${desc}</p>
+  </article>
+  </li>`; 
+  return newCat;
+}
+
+
+//Crear la función que vamos a pasar de parámetro en el event listener con el código que se va a ejecutar al hacer click 
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (addKittenSection.classList.contains('collapsed')) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
+}
+
+//Escuchar el evento sobre el botón 
+
+showFormButton.addEventListener('click', handleClickNewCatForm);
+
+//declarar variables con los input de desc, name, race, url
+
+function addNewKitten(event) {
+  event.preventDefault();
+  //Recoger inputs.value
+  kittenList.innerHTML += renderKitten; 
+}
+
+addKittenButton.addEventListener('click', addNewKitten);
+
 
 
 const buttonCancel = document.querySelector('.js-button-cancel');
