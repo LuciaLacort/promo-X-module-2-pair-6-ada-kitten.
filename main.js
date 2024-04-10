@@ -83,7 +83,7 @@ let desc = 'Es un gato chulísimo';
 let raza = 'Alien';
 let url = 'https://dev.adalab.es/maine-coon-cat.webp';*/
 
-function renderKitten(url, desc, name, raza){
+function renderKitten(url, name, raza, desc){
   const newCat = `<li class="card">
   <article>
     <img
