@@ -120,7 +120,7 @@ showFormButton.addEventListener('click', handleClickNewCatForm);
 function addNewKitten(event) {
   event.preventDefault();
   //Recoger inputs.value
-  kittenList.innerHTML += renderKitten; 
+  kittenList.innerHTML += renderKitten('https://dev.adalab.es/maine-coon-cat.webp','Antonia', 'Alien', 'hermoso' ); 
 }
 
 addKittenButton.addEventListener('click', addNewKitten);
