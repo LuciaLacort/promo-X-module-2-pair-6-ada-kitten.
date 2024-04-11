@@ -161,11 +161,26 @@ function addNewKitten(event) {
   kittenList.innerHTML += renderKitten(url, name, raza, desc);
 }
 
+
+
+const alertEmptyFields = ()=>{
+  const raza = inputRace.value;
+  const desc = inputDesc.value;
+  const alert = document.querySelector('.js-alert');
+
+  if(raza === "" || desc === ""){
+    alert.textContent = 'Por favor, complete ambos campos.';
+  } else {
+    alert.textContent = '';
+  }
+}
+
 // Se escucha al boton de añadir que al hacer click ejecuta la función que añade un gato nuevo, que a su vez recoge los valores de los inputs del formulario e invoca a la función que crea la tarjeta 
 
 const handleClickaddNewKitten = (event)=>{
   event.preventDefault();
-  hideNewCatForm();
+  /*hideNewCatForm();*/
+  alertEmptyFields();
   addNewKitten();
   
 };
@@ -234,19 +249,11 @@ const filterKitten = (event) => {
   }
 };
 
-const alertEmptyFields = ()=>{
-  const raza = inputRace.value;
-  const desc = inputDesc.value;
-
-  if(raza === " " || desc === " "){
-    alert('Por favor rellene los campos vacíos.');
-  }
-}
 
 const handleClickAlert = (event)=>{
     event.preventDefault();
     filterKitten();
-    alertEmptyFields();
+   /* alertEmptyFields();*/
 };
 
 searchBtn.addEventListener('click', handleClickAlert);
