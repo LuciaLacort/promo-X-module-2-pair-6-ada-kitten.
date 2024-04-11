@@ -103,6 +103,7 @@ function handleClickNewCatForm(event) {
 showFormButton.addEventListener('click', handleClickNewCatForm);
 
 
+
 const buttonCancel = document.querySelector('.js-button-cancel');
 
 buttonCancel.addEventListener('click', (event)=>{
@@ -110,33 +111,8 @@ buttonCancel.addEventListener('click', (event)=>{
   newForm.reset();
 });
 
-const input_search_desc = document.querySelector('.js_in_search_desc');
-const searchBtn = document.querySelector('.js_search_btn');
 
-searchBtn.addEventListener('click', (event)=>{
-  event.preventDefault();
-  const descrSearchText = input_search_desc.value;
-  kittenList.innerHTML = " ";
-  
-  if(kittenOne.includes(descrSearchText)) {
-      kittenList.innerHTML += kittenOne;
-    } 
-  
-  if(kittenTwo.includes(descrSearchText)) {
-      kittenList.innerHTML += kittenTwo;
-    }
-    
-  if(kittenThree.includes(descrSearchText)) {
-      kittenList.innerHTML += kittenThree;
-    } 
 
-  if(kittenOne.includes(descrSearchText) === false && kittenTwo.includes(descrSearchText) === false && kittenThree.includes(descrSearchText) === false){
-      kittenList.innerHTML ='<p class="noKitten">No hay ningún gatito con esa característica.<p>';
-    } 
-
-});
-
-//cómo hacer que dé igual si se escribe con mayúscula o no y cómo checkear que sean palabras importantes las de la búsqueda (que si la búsqueda tiene la, todos tienen esa palabra en la descripción)
 
 
 
@@ -149,25 +125,7 @@ const inputName = document.querySelector('.js-input-name');
 const inputRace = document.querySelector('.js-input-raza');
 const inputDesc = document.querySelector('.js-input-desc');
 
-//Sacar el valor de cada input con un listener
 
-//El addeventlistener de abajo no sirve porque es para luego modificar un html y en este caso no se puede porque el html lo metemos desde JS
-
-/*newForm.addEventListener('input', (event)=>{
-  const input = event.target.id; //obtener id del input
-  const valueInput = event.target.value; //obtener valor input
-  console.log("working input");
-
-  if (input === 'catImage'){
-      .innerHTML = valueInput;
-  } else if (input === 'catName'){
-      .innerHTML = valueInput;
-  } else if (input === 'catRace'){
-      .innerHTML = valueInput;
-  } else if (input === 'catDesc'){
-       .inner.HTML= valueInput;
-  } 
-});*/
 
 //Entonces tenemos que hacer una función que cree una card nueva con los parámetros que queremos que tenga.
 
@@ -192,7 +150,7 @@ function renderKitten(url, name, raza, desc){
 
 
 function addNewKitten(event) {
-  event.preventDefault();
+  
 
   const url = inputImage.value;
   const name = inputName.value;
@@ -203,9 +161,16 @@ function addNewKitten(event) {
   kittenList.innerHTML += renderKitten(url, name, raza, desc);
 }
 
-// Se escucha al boton de anadir que al hacer click ejecuta la función que añade un gato nuevo, que a su vez recoge los valores de los inputs del formulario e invoca a la función que crea la tarjeta 
+// Se escucha al boton de añadir que al hacer click ejecuta la función que añade un gato nuevo, que a su vez recoge los valores de los inputs del formulario e invoca a la función que crea la tarjeta 
 
-addKittenButton.addEventListener('click', addNewKitten);
+const handleClickaddNewKitten = (event)=>{
+  event.preventDefault();
+  hideNewCatForm();
+  addNewKitten();
+  
+};
+
+addKittenButton.addEventListener('click', handleClickaddNewKitten);
 
 
 
@@ -243,6 +208,48 @@ if (race3 === "") {
   kittenRace3.innerHTML = `<h3 class="card_race3">${race3}</h3>`;
 }
 
+
+
+//Buscar por descripción
+
+
+
+const input_search_desc = document.querySelector('.js_in_search_desc');
+const searchBtn = document.querySelector('.js_search_btn');
+
+const filterKitten = (event) => {
+  const descrSearchText = input_search_desc.value;
+  kittenList.innerHTML = " ";
+  if(kittenOne.includes(descrSearchText)) {
+    kittenList.innerHTML += kittenOne;
+  } 
+  if(kittenTwo.includes(descrSearchText)) {
+    kittenList.innerHTML += kittenTwo;
+  }
+  if(kittenThree.includes(descrSearchText)) {
+    kittenList.innerHTML += kittenThree;
+  } 
+  if(kittenOne.includes(descrSearchText) === false && kittenTwo.includes(descrSearchText) === false && kittenThree.includes(descrSearchText) === false){
+    kittenList.innerHTML ='<p class="noKitten">No hay ningún gatito con esa característica.<p>';
+  }
+};
+
+const alertEmptyFields = ()=>{
+  const raza = inputRace.value;
+  const desc = inputDesc.value;
+
+  if(raza === " " || desc === " "){
+    alert('Por favor rellene los campos vacíos.');
+  }
+}
+
+const handleClickAlert = (event)=>{
+    event.preventDefault();
+    filterKitten();
+    alertEmptyFields();
+};
+
+searchBtn.addEventListener('click', handleClickAlert);
 
 
 
