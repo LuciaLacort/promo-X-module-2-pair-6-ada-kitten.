@@ -7,7 +7,7 @@ const kittenOneName = 'Anastacio';
 const kittenOneNameUpper = kittenOneName.toUpperCase();
 const kittenOneDesc =
   'Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos hace 500 años, donde tuvo su origen muy posiblemente.';
-const kittenOneRace = 'Siamés';
+const kittenOneRace = '';
 
 const kittenOne = `<li class="card">
 <article>
@@ -103,16 +103,12 @@ function handleClickNewCatForm(event) {
 showFormButton.addEventListener('click', handleClickNewCatForm);
 
 
-
 const buttonCancel = document.querySelector('.js-button-cancel');
 
 buttonCancel.addEventListener('click', (event)=>{
   addKittenSection.classList.add('collapsed');
   newForm.reset();
 });
-
-
-
 
 
 
@@ -136,7 +132,7 @@ function renderKitten(url, name, raza, desc){
     <img
       class="card_img"
       src=${url}
-      alt="siames-cat"
+      alt="cat"
     />
     <h3 class="card_title">${name}</h3>
     <h4 class="card_race">${raza}</h4>
@@ -172,6 +168,7 @@ const alertEmptyFields = ()=>{
     alert.textContent = 'Por favor, complete ambos campos.';
   } else {
     alert.textContent = '';
+    hideNewCatForm();;
   }
 }
 
@@ -179,10 +176,8 @@ const alertEmptyFields = ()=>{
 
 const handleClickaddNewKitten = (event)=>{
   event.preventDefault();
-  /*hideNewCatForm();*/
   alertEmptyFields();
   addNewKitten();
-  
 };
 
 addKittenButton.addEventListener('click', handleClickaddNewKitten);
@@ -190,7 +185,7 @@ addKittenButton.addEventListener('click', handleClickaddNewKitten);
 
 
 
-// raza
+// raza FUNCIONA
 
 const kittenRace1 = document.querySelector(".card_race");
 const race = kittenRace1.innerHTML;
@@ -230,6 +225,7 @@ if (race3 === "") {
 
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
+const input_search_race = document.querySelector('.js_in_search_race');
 const searchBtn = document.querySelector('.js_search_btn');
 
 const filterKitten = (event) => {
@@ -249,14 +245,33 @@ const filterKitten = (event) => {
   }
 };
 
+//Búsqueda por raza NO FUNCIONA
 
-const handleClickAlert = (event)=>{
+const filterRaceKitten = (event) => {
+  const descrSearchRace = input_search_desc.value;
+  kittenList.innerHTML = " ";
+  if(kittenOneRace === descrSearchRace) {
+    kittenList.innerHTML += kittenOne;
+  } 
+  if(kittenTwoRace === descrSearchRace) {
+    kittenList.innerHTML += kittenTwo;
+  }
+  if(kittenThreeRace === descrSearchRace) {
+    kittenList.innerHTML += kittenThree;
+  } 
+  if(kittenOneRace !== descrSearchRace && kittenTwoRace !== descrSearchRace && kittenThreeRace !== descrSearchRace){
+    kittenList.innerHTML ='<p class="noKitten">No hay ningún gatito de esa raza.<p>';
+  }
+};
+
+
+const handleClickSearch = (event)=>{
     event.preventDefault();
-    filterKitten();
+    filterKitten() && filterRaceKitten();
    /* alertEmptyFields();*/
 };
 
-searchBtn.addEventListener('click', handleClickAlert);
+searchBtn.addEventListener('click', handleClickSearch);
 
 
 
