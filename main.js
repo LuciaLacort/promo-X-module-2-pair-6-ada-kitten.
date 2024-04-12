@@ -65,11 +65,8 @@ kittenList.innerHTML = kittenOne + kittenTwo + kittenThree;
 //Definir query selectors
 
 const addKittenSection = document.querySelector('.js-new-kitten');
-
 const newForm = document.querySelector('.js-new-form');
-
 const showFormButton = document.querySelector('.js-kitten-add');
-
 const addKittenButton = document.querySelector('.js-btn-add');
 
 
@@ -168,6 +165,7 @@ const alertEmptyFields = ()=>{
     alert.textContent = 'Por favor, complete ambos campos.';
   } else {
     alert.textContent = '';
+    addNewKitten()
     hideNewCatForm();;
   }
 }
@@ -177,7 +175,6 @@ const alertEmptyFields = ()=>{
 const handleClickaddNewKitten = (event)=>{
   event.preventDefault();
   alertEmptyFields();
-  addNewKitten();
 };
 
 addKittenButton.addEventListener('click', handleClickaddNewKitten);
