@@ -159,11 +159,12 @@ const handleNewKitten = (event) => {
   const valueInput = event.target.value;
   const idInput = event.target.id;
   kittenData[idInput] = valueInput;
-  kittenList.innerHTML += renderKitten(kittenData);
+  
+  console.log(event.target.value);
 }
 
 
-kittenList.addEventListener('input', handleNewKitten);
+newForm.addEventListener('input', handleNewKitten);
 
 
 
@@ -191,8 +192,9 @@ const alertEmptyFields = ()=>{
     alert.textContent = 'Por favor, complete ambos campos.';
   } else {
     alert.textContent = '';
-    handleNewKitten()
-    hideNewCatForm();;
+    kittenList.innerHTML += renderKitten(kittenData);
+    // handleNewKitten();
+    hideNewCatForm();
   }
 }
 
