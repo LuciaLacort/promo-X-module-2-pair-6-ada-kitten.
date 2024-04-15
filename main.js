@@ -34,47 +34,6 @@ const kittenData_3 = {
 };
 
 
-/*const kittenOne = `<li class="card">
-<article>
-  <img
-    class="card_img"
-    src="${kittenData_1.image}"
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${kittenData_1.name}</h3>
-  <h4 class="card_race">${kittenData_1.race}</h4>
-  <p class="card_description">${kittenData_1.desc}</p>
-</article>
-</li>`; 
-
-
-const kittenTwo = `<li class="card">
-<article>
-  <img
-    class="card_img"
-    src="${kittenData_2.image}"
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${kittenData_2.name}</h3>
-  <h4 class="card_race">${kittenData_2.race}</h4>
-  <p class="card_description">${kittenData_2.desc}</p>
-</article>
-</li>`;
-
-
-const kittenThree = `<li class="card">
-<article>
-  <img
-    class="card_img"
-    src="${kittenData_3.image}"
-    alt="siames-cat"
-  />
-  <h3 class="card_title">${kittenData_3.name}</h3>
-  <h4 class="card_race">${kittenData_3.race}</h4>
-  <p class="card_description">${kittenData_3.desc}</p>
-</article>
-</li>`;*/
-
 
 // Plantilla de tarjeta de gatito
 function renderKitten(kittenData) {
@@ -109,20 +68,11 @@ showFormButton.addEventListener('click', () => {
   }
 });
 
-//Crear la función que vamos a pasar de parámetro en el event listener con el código que se va a ejecutar al hacer click 
 
-/*function handleClickNewCatForm(event) {
-  event.preventDefault();
-  if (addKittenSection.classList.contains('collapsed')) {
-    showNewCatForm();
-  } else {
-    hideNewCatForm();
-  }
-}*/
 
 //Escuchar el evento sobre el botón 
 
-/*showFormButton.addEventListener('click', handleClickNewCatForm);*/
+
 const cancelButton = document.querySelector('.js-button-cancel');
 cancelButton.addEventListener('click', (event) => {
   event.preventDefault();
@@ -153,11 +103,11 @@ newForm.addEventListener('submit', (event) => {
     kittenList.innerHTML += renderKitten(newKittenData);
 
     // Resetear el formulario y ocultar el formulario
-    newForm.reset();
+    // newForm.reset();
     hideNewCatForm();
-    alertMessage.textContent = '';
+    alertMessage.innerHTML = '';
   } else {
-    alertMessage.textContent = 'Por favor, complete todos los campos.';
+    alertMessage.innerHTML = 'Por favor, complete todos los campos.';
   }
 });
 
