@@ -300,8 +300,8 @@ const filterRaceKitten = (event) => {
 
 const handleClickSearch = (event)=>{
     event.preventDefault();
-    // filterKitten();
-    filterRaceKitten();;
+    filterKitten();
+    // filterRaceKitten();;
     
    /* alertEmptyFields();*/
 };
